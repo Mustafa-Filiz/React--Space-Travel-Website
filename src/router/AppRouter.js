@@ -1,16 +1,18 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Home from '../pages/Home'
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from '../pages/Home';
+import FontTheme from '../theme/ThemeProvider';
 
 function AppRouter() {
-	return (
-		<Router>
-			<Switch>
-				<Route exact path="/" component={Home} />
-			</Switch>
-		</Router>
-	)
+    return (
+        <FontTheme>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                </Switch>
+            </Router>
+        </FontTheme>
+    );
 }
 
-export default AppRouter
+export default AppRouter;
