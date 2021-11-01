@@ -4,11 +4,19 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import { makeStyles } from '@mui/styles';
 import { Button, Typography } from '@mui/material';
+import logo from "../images/logo.svg"
 
 const useStyles = makeStyles({
     container: {
         display: 'flex !important',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
+        alignItems: "center",
+    },
+    line:{
+        width: "30%",
+        height: 2,
+        backgroundColor : "#fff",
+        opacity: 0.5,
     },
     navbar: {
         width: '55% !important',
@@ -28,7 +36,8 @@ const useStyles = makeStyles({
 		boxSizing : "border-box",
 
 		"&:hover" : {
-			borderBottom : "3px solid white"
+			borderBottom : "3px solid white",
+            backgroundColor : "transparent !important"
 		},
 		"&:focus" : {
 			borderBottom : "3px solid white"
@@ -41,19 +50,21 @@ export default function Navbar() {
 
     return (
         <Box className={classes.container} sx={{ flexGrow: 1 }}>
+            <img src={logo} alt="logo" style={{ height : 48, marginLeft : 40}} />
+            <Box className={classes.line} />
             <AppBar className={classes.navbar} position="static">
                 <Toolbar className={classes.btncontainer}>
                     <Button className={classes.btn}>
-                        <Typography>00 HOME</Typography>
+                        <Typography variant="h6">00 HOME</Typography>
                     </Button>
                     <Button className={classes.btn}>
-                        <Typography>01 DESTINATION</Typography>
+                        <Typography variant="h6">01 DESTINATION</Typography>
                     </Button>
                     <Button className={classes.btn}>
-                        <Typography>02 CREW</Typography>
+                        <Typography variant="h6">02 CREW</Typography>
                     </Button>
                     <Button className={classes.btn}>
-                        <Typography>03 TECHNOLOGY</Typography>
+                        <Typography variant="h6">03 TECHNOLOGY</Typography>
                     </Button>
                 </Toolbar>
             </AppBar>
