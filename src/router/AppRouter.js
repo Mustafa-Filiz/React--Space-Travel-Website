@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../pages/Home';
-import FontTheme from '../theme/ThemeProvider';
+import AppThemeProvider from '../theme/ThemeProvider';
 
 function AppRouter() {
     return (
-        <FontTheme>
+        <AppThemeProvider>
             <Router>
                 <Switch>
                     <Route exact path="/" component={Home} />
                 </Switch>
             </Router>
-        </FontTheme>
+        </AppThemeProvider>
     );
 }
 
