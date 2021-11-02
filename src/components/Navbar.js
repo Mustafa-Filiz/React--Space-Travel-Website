@@ -23,11 +23,13 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     menu:{
-        marginRight : 30,
-        color: "#D0D6F9",
+        marginRight : "20px !important",
         [theme.breakpoints.up('md')]: {
             display: 'none !important',
         },
+    },
+    icon:{
+        color: "#D0D6F9",
     },
     navbar: {
         width: '55% !important',
@@ -51,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '0 !important',
         color: 'white !important',
         boxSizing: 'border-box',
+        fontFamily:"Barlow Condensed !important",
         '&:hover': {
             borderBottom: '3px solid white',
             backgroundColor: 'transparent !important',
@@ -72,7 +75,7 @@ export default function Navbar() {
             <img src={logo} alt="logo" style={{ height: 48, marginLeft: 40 }} />
             <Box className={classes.line} />
             <IconButton size="large" className={classes.menu}>
-                <MenuIcon fontSize="large"  className={classes.menu} />
+                <MenuIcon fontSize="large"  className={classes.icon} />
             </IconButton>
             <AppBar className={classes.navbar} position="static">
                 <Toolbar className={classes.btncontainer}>
