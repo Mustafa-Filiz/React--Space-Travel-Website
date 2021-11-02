@@ -6,6 +6,7 @@ import { makeStyles } from '@mui/styles';
 import { Button, IconButton, Typography } from '@mui/material';
 import logo from '../images/logo.svg';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -22,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
             display: 'none',
         },
     },
-    menu:{
-        marginRight : "20px !important",
+    menu: {
+        marginRight: '20px !important',
         [theme.breakpoints.up('md')]: {
             display: 'none !important',
         },
     },
-    icon:{
-        color: "#D0D6F9",
+    icon: {
+        color: '#D0D6F9',
     },
     navbar: {
         width: '55% !important',
@@ -48,21 +49,17 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     btn: {
-        width: '23%',
         height: 96,
         borderRadius: '0 !important',
         color: 'white !important',
         boxSizing: 'border-box',
-        fontFamily:"Barlow Condensed !important",
+        fontFamily: 'Barlow Condensed !important',
         '&:hover': {
             borderBottom: '3px solid white',
             backgroundColor: 'transparent !important',
         },
         '&:focus': {
             borderBottom: '3px solid white',
-        },
-        [theme.breakpoints.down('lg')]: {
-            width: '30% !important',
         },
     },
 }));
@@ -75,22 +72,30 @@ export default function Navbar() {
             <img src={logo} alt="logo" style={{ height: 48, marginLeft: 40 }} />
             <Box className={classes.line} />
             <IconButton size="large" className={classes.menu}>
-                <MenuIcon fontSize="large"  className={classes.icon} />
+                <MenuIcon fontSize="large" className={classes.icon} />
             </IconButton>
             <AppBar className={classes.navbar} position="static">
                 <Toolbar className={classes.btncontainer}>
-                    <Button className={classes.btn}>
-                        <Typography variant="h6">00 HOME</Typography>
-                    </Button>
-                    <Button className={classes.btn}>
-                        <Typography variant="h6">01 DESTINATION</Typography>
-                    </Button>
-                    <Button className={classes.btn}>
-                        <Typography variant="h6">02 CREW</Typography>
-                    </Button>
-                    <Button className={classes.btn}>
-                        <Typography variant="h6">03 TECHNOLOGY</Typography>
-                    </Button>
+                    <Link to="/">
+                        <Button className={classes.btn}>
+                            <Typography variant="h6">00 HOME</Typography>
+                        </Button>
+                    </Link>
+                    <Link to="/destination">
+                        <Button className={classes.btn}>
+                            <Typography variant="h6">01 DESTINATION</Typography>
+                        </Button>
+                    </Link>
+                    <Link to="/crew">
+                        <Button className={classes.btn}>
+                            <Typography variant="h6">02 CREW</Typography>
+                        </Button>
+                    </Link>
+                    <Link to="/technology">
+                        <Button className={classes.btn}>
+                            <Typography variant="h6">03 TECHNOLOGY</Typography>
+                        </Button>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </Box>
