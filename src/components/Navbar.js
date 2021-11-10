@@ -6,7 +6,7 @@ import { makeStyles } from '@mui/styles';
 import { Button, IconButton, Typography } from '@mui/material';
 import logo from '../images/logo.svg';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -49,18 +49,18 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     btn: {
+        width: "100%",
         height: 96,
         borderRadius: '0 !important',
         color: 'white !important',
         boxSizing: 'border-box',
         fontFamily: 'Barlow Condensed !important',
-        '&:hover': {
-            borderBottom: '3px solid white',
-            backgroundColor: 'transparent !important',
-        },
-        '&:focus': {
-            borderBottom: '3px solid white',
-        },
+    },
+    active: {
+        borderBottom: '3px solid white',
+        '&hover' : {
+            borderBottom: '3px solid white', 
+        }
     },
 }));
 
@@ -76,26 +76,26 @@ export default function Navbar() {
             </IconButton>
             <AppBar className={classes.navbar} position="static">
                 <Toolbar className={classes.btncontainer}>
-                    <Link to="/">
+                    <NavLink exact activeClassName={classes.active} to="/">
                         <Button className={classes.btn}>
                             <Typography variant="h6">00 HOME</Typography>
                         </Button>
-                    </Link>
-                    <Link to="/destination">
+                    </NavLink>
+                    <NavLink activeClassName={classes.active} to="/destination">
                         <Button className={classes.btn}>
                             <Typography variant="h6">01 DESTINATION</Typography>
                         </Button>
-                    </Link>
-                    <Link to="/crew">
+                    </NavLink>
+                    <NavLink activeClassName={classes.active} to="/crew">
                         <Button className={classes.btn}>
                             <Typography variant="h6">02 CREW</Typography>
                         </Button>
-                    </Link>
-                    <Link to="/technology">
+                    </NavLink>
+                    <NavLink activeClassName={classes.active} to="/technology">
                         <Button className={classes.btn}>
                             <Typography variant="h6">03 TECHNOLOGY</Typography>
                         </Button>
-                    </Link>
+                    </NavLink>
                 </Toolbar>
             </AppBar>
         </Box>
