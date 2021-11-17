@@ -12,9 +12,9 @@ function AppRouter() {
             <Router>
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/destination" component={Destination} />
-                    <Route exact path="/crew" component={Crew} />
-                    <Route exact path="/technology" component={Technology} />
+                    <Route path="/destination" component={Destination} />
+                    <Route path="/crew" component={Crew} />
+                    <Route path="/technology" component={Technology} />
                 </Switch>
             </Router>
         </AppThemeProvider>
