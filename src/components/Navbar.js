@@ -49,18 +49,16 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     btn: {
-        width: "100%",
+        width: '100%',
         height: 96,
         borderRadius: '0 !important',
         color: 'white !important',
         boxSizing: 'border-box',
         fontFamily: 'Barlow Condensed !important',
+        letterSpacing: '2.7px',
     },
     active: {
         borderBottom: '3px solid white',
-        '&hover' : {
-            borderBottom: '3px solid white', 
-        }
     },
 }));
 
@@ -78,22 +76,32 @@ export default function Navbar() {
                 <Toolbar className={classes.btncontainer}>
                     <NavLink exact activeClassName={classes.active} to="/">
                         <Button className={classes.btn}>
-                            <Typography variant="h6">00 HOME</Typography>
+                            <Typography variant="h6">
+                                <span style={{ fontWeight: 700 }}>00</span> HOME
+                            </Typography>
                         </Button>
                     </NavLink>
                     <NavLink activeClassName={classes.active} to="/destination">
                         <Button className={classes.btn}>
-                            <Typography variant="h6">01 DESTINATION</Typography>
+                            <Typography variant="h6">
+                                <span style={{ fontWeight: 700 }}>01</span>{' '}
+                                DESTINATION
+                            </Typography>
                         </Button>
                     </NavLink>
                     <NavLink activeClassName={classes.active} to="/crew">
                         <Button className={classes.btn}>
-                            <Typography variant="h6">02 CREW</Typography>
+                            <Typography variant="h6">
+                                <span style={{ fontWeight: 700 }}>02</span> CREW
+                            </Typography>
                         </Button>
                     </NavLink>
                     <NavLink activeClassName={classes.active} to="/technology">
                         <Button className={classes.btn}>
-                            <Typography variant="h6">03 TECHNOLOGY</Typography>
+                            <Typography variant="h6">
+                                <span style={{ fontWeight: 700 }}>03</span>{' '}
+                                TECHNOLOGY
+                            </Typography>
                         </Button>
                     </NavLink>
                 </Toolbar>
