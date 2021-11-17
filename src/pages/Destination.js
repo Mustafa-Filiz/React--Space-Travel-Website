@@ -2,8 +2,11 @@ import { Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';
 import React from 'react';
+import { NavLink, useRouteMatch, Route, Switch } from 'react-router-dom';
+import DestinationDetails from '../components/DestinationDetails';
 import Navbar from '../components/Navbar';
 import bgImg from '../images/destination/background-destination-desktop.jpg';
+import data from '../utils/data.json';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -13,111 +16,45 @@ const useStyles = makeStyles((theme) => ({
         backgroundSize: 'cover',
         paddingTop: 40,
     },
-    main: {
-        width: '90%',
-        height: '80vh',
-        margin: 'auto',
-        display: 'flex',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        color: 'white',
-        [theme.breakpoints.down('md')]: {
-            flexDirection: 'column',
-        },
-    },
-    content: {
-        width: '33%',
-        textAlign: 'left',
-        [theme.breakpoints.down('md')]: {
-            width: '60%',
-        },
-    },
-    subtitle: {
-        fontSize: '1.75rem !important',
-        color: '#D0D6F9',
-        letterSpacing: '4.725px',
-        [theme.breakpoints.down('md')]: {
-            fontSize: '1.5rem !important',
-        },
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '1rem !important',
-        },
-    },
     title: {
-        fontSize: '9.4rem !important',
-        fontFamily: 'Bellefair !important',
-        [theme.breakpoints.down('lg')]: {
-            fontSize: '8rem !important',
-        },
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '5rem !important',
-        },
+        width: '75%',
+        margin: '4.5rem auto !important',
+        color: 'white',
+        fontSize: '1.75rem !important',
+        textAlign: 'left',
     },
-    text: {
-        fontSize: '1.12rem !important',
-        fontFamily: 'Barlow !important',
-        color: '#D0D6F9',
-        lineHeight: '2rem',
-        [theme.breakpoints.down('md')]: {
-            fontSize: '1rem !important',
-        },
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '0.9rem !important',
-        },
-    },
-    exploreContainer: {
-        width: 274,
-        height: 274,
-        color: 'black',
-        backgroundColor: 'white',
-        borderRadius: '50%',
+    subnavbar: {
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: '2rem',
-        [theme.breakpoints.down('md')]: {
-            width: 242,
-            height: 242,
-            fontSize: '1rem',
-        },
-        [theme.breakpoints.down('sm')]: {
-            width: 150,
-            height: 150,
-        },
-    },
-    explore: {
-        fontSize: '3.5rem !important',
-        fontFamily: 'Bellefair !important',
-        [theme.breakpoints.down('md')]: {
-            fontSize: '3rem !important',
-        },
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '2rem !important',
-        },
     },
 }));
 
 function Destination() {
     const classes = useStyles();
+    const { path, url } = useRouteMatch();
+
     return (
         <Box className={classes.container}>
             <Navbar />
-            <Box className={classes.main}>
-                <Box className={classes.content}>
-                    <Typography className={classes.subtitle}>
-                        SO, YOU WANT TO TRAVEL TO
-                    </Typography>
-                    <Typography className={classes.title}>SPACE</Typography>
-                    <Typography className={classes.text}>
-                        Let’s face it; if you want to go to space, you might as
-                        well genuinely go to outer space and not hover kind of
-                        on the edge of it. Well sit back, and relax because
-                        we’ll give you a truly out of this world experience!
-                    </Typography>
+            <Box>
+                <Typography className={classes.title}>
+                    01 PICK YOUR DESTINATION
+                </Typography>
+            </Box>
+
+            <Box>
+                <Box className={classes.subnavbar}>
+                    {data.destinations.map(({name}, index) => (
+                        <NavLink to={`${url}/${name}`} key={index}>
+                            <Typography>
+                                {name.toUpperCase()}
+                            </Typography>
+                        </NavLink>
+                    ))}
                 </Box>
-                <Box className={classes.exploreContainer}>
-                    <Typography className={classes.explore}>EXPLORE</Typography>
-                </Box>
+
+                <Switch>
+                    <Route path={`${path}/:name`} component={DestinationDetails} />
+                </Switch>
             </Box>
         </Box>
     );
